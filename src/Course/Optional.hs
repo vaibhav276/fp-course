@@ -79,8 +79,8 @@ Empty ?? y    = y
   Optional a
   -> Optional a
   -> Optional a
-(<+>) =
-  error "todo: Course.Optional#(<+>)"
+Full x <+> _ = Full x
+Empty <+> o  = o
 
 -- | Replaces the Full and Empty constructors in an optional.
 --
