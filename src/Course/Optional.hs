@@ -27,8 +27,8 @@ mapOptional ::
   (a -> b)
   -> Optional a
   -> Optional b
-mapOptional =
-  error "todo: Course.Optional#mapOptional"
+mapOptional f (Full x) = Full $ f x
+mapOptional _ Empty    = Empty
 
 -- | Bind the given function on the possible value.
 --
