@@ -77,7 +77,7 @@ headOr ::
   -> a
 -- headOr x Nil      = x
 -- headOr _ (a :. _) = a
-headOr x xs = foldRight (\a _ -> a) x xs
+headOr = foldRight const
 
 -- | The product of the elements of a list.
 --
@@ -93,7 +93,7 @@ product ::
   List Int
   -> Int
 product =
-  error "todo: Course.List#product"
+  foldRight (*) 1
 
 -- | Sum the elements of the list.
 --
