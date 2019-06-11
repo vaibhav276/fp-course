@@ -167,8 +167,8 @@ filter f = foldRight (\a as -> if (f a) then (a :. as) else (as)) Nil
   List a
   -> List a
   -> List a
-(++) =
-  error "todo: Course.List#(++)"
+-- (++) as bs = foldRight (:.) bs as
+(++) = flip ( foldRight (:.) )
 
 infixr 5 ++
 
