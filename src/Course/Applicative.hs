@@ -47,14 +47,15 @@ instance Applicative ExactlyOne where
   pure ::
     a
     -> ExactlyOne a
-  pure =
-    error "todo: Course.Applicative pure#instance ExactlyOne"
+  pure = ExactlyOne
   (<*>) ::
     ExactlyOne (a -> b)
     -> ExactlyOne a
     -> ExactlyOne b
-  (<*>) =
-    error "todo: Course.Applicative (<*>)#instance ExactlyOne"
+--   (<*>) ef ea = let f = runExactlyOne ef
+--                     a = runExactlyOne ea
+--                 in ExactlyOne (f a)
+  (<*>) = mapExactlyOne . runExactlyOne
 
 -- | Insert into a List.
 --
