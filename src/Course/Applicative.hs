@@ -340,8 +340,8 @@ replicateA ::
   Int
   -> f a
   -> f (List a)
-replicateA =
-  error "todo: Course.Applicative#replicateA"
+replicateA n = lift1 (replicate n)
+-- replicateA n fa = sequence (replicate n fa)
 
 -- | Filter a list with a predicate that produces an effect.
 --
