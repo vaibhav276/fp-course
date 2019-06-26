@@ -71,8 +71,7 @@ instance Monad ((->) t) where
     (a -> ((->) t b))
     -> ((->) t a)
     -> ((->) t b)
-  (=<<) =
-    error "todo: Course.Monad (=<<)#instance ((->) t)"
+  (=<<) artb rta = \t -> artb (rta t) t
 
 -- | Witness that all things with (=<<) and (<$>) also have (<*>).
 --
