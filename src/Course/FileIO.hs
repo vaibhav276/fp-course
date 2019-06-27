@@ -1,15 +1,15 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE RebindableSyntax    #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RebindableSyntax #-}
 
 module Course.FileIO where
 
-import Course.Core
-import Course.Applicative
-import Course.Monad
-import Course.Functor
-import Course.List
+import           Course.Applicative
+import           Course.Core
+import           Course.Functor
+import           Course.List
+import           Course.Monad
 
 {-
 
