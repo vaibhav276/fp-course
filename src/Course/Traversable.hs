@@ -53,8 +53,8 @@ instance Traversable Optional where
     (a -> f b)
     -> Optional a
     -> f (Optional b)
-  traverse =
-    error "todo: Course.Traversable traverse#instance Optional"
+  traverse f (Full x) = Full <$> f x
+  traverse _ Empty    = pure Empty
 
 -- | Sequences a traversable value of structures to a structure of a traversable value.
 --
