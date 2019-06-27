@@ -45,8 +45,7 @@ instance Traversable ExactlyOne where
     (a -> f b)
     -> ExactlyOne a
     -> f (ExactlyOne b)
-  traverse =
-    error "todo: Course.Traversable traverse#instance ExactlyOne"
+  traverse f eoa = ExactlyOne <$> f (runExactlyOne eoa)
 
 instance Traversable Optional where
   traverse ::
