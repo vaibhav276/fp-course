@@ -1,16 +1,16 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE InstanceSigs        #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE InstanceSigs #-}
 
 module Course.Traversable where
 
-import Course.Core
-import Course.Functor
-import Course.Applicative
-import Course.List
-import Course.ExactlyOne
-import Course.Optional
-import Course.Compose
+import           Course.Applicative
+import           Course.Compose
+import           Course.Core
+import           Course.ExactlyOne
+import           Course.Functor
+import           Course.List
+import           Course.Optional
 
 -- | All instances of the `Traversable` type-class must satisfy three laws. These
 -- laws are not checked by the compiler. These laws are given as:
