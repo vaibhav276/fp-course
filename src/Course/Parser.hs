@@ -216,8 +216,7 @@ instance Applicative Parser where
     Parser (a -> b)
     -> Parser a
     -> Parser b
-  (<*>) =
-    error "todo: Course.Parser (<*>)#instance Parser"
+  (<*>) f pa = (<$> pa) =<< f
 
 -- | Return a parser that produces a character but fails if
 --
