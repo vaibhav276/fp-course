@@ -120,7 +120,7 @@ constantParser =
 character ::
   Parser Char
 character = P (\input -> case input of
-                  Nil       -> UnexpectedString input
+                  Nil       -> UnexpectedEof
                   (a :. as) -> Result (as) a
               )
 
