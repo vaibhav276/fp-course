@@ -166,8 +166,10 @@ valueParser a = P (\input -> Result input a)
   Parser a
   -> Parser a
   -> Parser a
-(|||) =
-  error "todo: Course.Parser#(|||)"
+(|||) (P pf1) (P pf2) = P (\i ->
+                             if isErrorResult (pf1 i)
+                             then (pf2 i)
+                             else (pf1 i))
 
 infixl 3 |||
 
