@@ -265,9 +265,7 @@ is c = satisfy (== c)
 -- /Tip:/ Use the @satisfy@ and @Data.Char#isDigit@ functions.
 digit ::
   Parser Char
-digit =
-  error "todo: Course.Parser#digit"
-
+digit = satisfy (Data.Char.isDigit)
 --
 -- | Return a parser that produces a space character but fails if
 --
