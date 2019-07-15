@@ -276,8 +276,7 @@ digit = satisfy (Data.Char.isDigit)
 -- /Tip:/ Use the @satisfy@ and @Data.Char#isSpace@ functions.
 space ::
   Parser Char
-space =
-  error "todo: Course.Parser#space"
+space = satisfy (Data.Char.isSpace)
 
 -- | Return a parser that continues producing a list of values from the given parser.
 --
