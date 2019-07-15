@@ -302,8 +302,7 @@ space = satisfy (Data.Char.isSpace)
 list ::
   Parser a
   -> Parser (List a)
-list =
-  error "todo: Course.Parser#list"
+list p = list1 p ||| pure Nil
 
 -- | Return a parser that produces at least one value from the given parser then
 -- continues producing a list of values from the given parser (to ultimately produce a non-empty list).
@@ -321,8 +320,12 @@ list =
 list1 ::
   Parser a
   -> Parser (List a)
-list1 =
-  error "todo: Course.Parser#list1"
+-- list1 pa = pa >>= (\a ->
+--                      list pa >>= \b ->
+--                       pure (a :. b))
+list1 pa = (\a -> (\b -> pure (a :. b)) =<< list pa) =<< pa
+-- list1 pa = lift2 (:.) pa (list pa)
+
 
 -- | Return a parser that produces one or more space characters
 -- (consuming until the first non-space) but fails if
