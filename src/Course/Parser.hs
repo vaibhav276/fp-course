@@ -430,8 +430,8 @@ ageParser =
 -- True
 firstNameParser ::
   Parser Chars
-firstNameParser =
-  error "todo: Course.Parser#firstNameParser"
+firstNameParser = upper >>= \a -> list lower >>= \b -> pure (a :. b)
+-- firstNameParser = lift2 (:.) upper (list lower)
 
 -- | Write a parser for Person.surname.
 --
