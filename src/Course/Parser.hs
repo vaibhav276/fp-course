@@ -234,16 +234,10 @@ instance Applicative Parser where
 satisfy ::
   (Char -> Bool)
   -> Parser Char
-satisfy pred = P (\i -> case i of
-                     a :. as -> if pred a then Result as a else UnexpectedChar a
-                     _ -> UnexpectedEof
-                 )
--- | this type checks but doesnt work
--- | we need something like a peek without consuming input
--- satisfy pred = character >>= (\c ->
---                                 if pred c
---                                 then character
---                                 else unexpectedCharParser c)
+satisfy pred = character >>= (\c ->
+                                if pred c
+                                then valueParser c
+                                else unexpectedCharParser c)
 
 -- | Return a parser that produces the given character but fails if
 --
