@@ -576,8 +576,17 @@ phoneParser = digit >>= (\a ->
 -- Result >< Person 123 "Fred" "Clarkson" True "123-456.789"
 personParser ::
   Parser Person
-personParser =
-  error "todo: Course.Parser#personParser"
+personParser = do
+  age <- ageParser
+  spaces1
+  fn <- firstNameParser
+  spaces1
+  sn <- surnameParser
+  spaces1
+  smoker <- smokerParser
+  spaces1
+  phone <- phoneParser
+  return $ Person age fn sn smoker phone
 
 -- Make sure all the tests pass!
 
