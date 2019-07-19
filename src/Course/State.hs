@@ -94,14 +94,14 @@ instance Applicative (State s) where
   pure ::
     a
     -> State s a
-  pure =
-    error "todo: Course.State pure#instance (State s)"
+  pure x = State $ \s -> (x,s)
   (<*>) ::
     State s (a -> b)
     -> State s a
     -> State s b
-  (<*>) =
-    error "todo: Course.State (<*>)#instance (State s)"
+  (<*>) sf sa = State $ \s -> let (f,s') = runState sf s
+                                  (a,s'') = runState sa s'
+                              in (f a,s'')
 
 -- | Implement the `Monad` instance for `State s`.
 --
