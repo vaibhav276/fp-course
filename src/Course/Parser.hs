@@ -452,8 +452,11 @@ firstNameParser = upper >>= \a -> list lower >>= \b -> pure (a :. b)
 -- True
 surnameParser ::
   Parser Chars
-surnameParser =
-  error "todo: Course.Parser#surnameParser"
+surnameParser = upper >>= (\a ->
+                             thisMany 5 lower >>= (\b ->
+                                                     list lower >>= \c ->
+                                                      pure (a :. b ++ c)))
+-- surnameParser = lift3 (\a b c -> a :. b ++ c) upper (thisMany 5 lower) (list lower)
 
 -- | Write a parser for Person.smoker.
 --
