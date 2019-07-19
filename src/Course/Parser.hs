@@ -495,8 +495,7 @@ smokerParser = (is 'y' >> pure True) ||| (is 'n' >> pure False)
 -- Result >a123-456< ""
 phoneBodyParser ::
   Parser Chars
-phoneBodyParser =
-  error "todo: Course.Parser#phoneBodyParser"
+phoneBodyParser = list ( digit ||| is '-' ||| is '.')
 
 -- | Write a parser for Person.phone.
 --
@@ -517,8 +516,10 @@ phoneBodyParser =
 -- True
 phoneParser ::
   Parser Chars
-phoneParser =
-  error "todo: Course.Parser#phoneParser"
+phoneParser = digit >>= (\a ->
+              phoneBodyParser >>= (\b ->
+              is '#' >>= (\c ->
+              pure (a :. b ++ (pure c)))))
 
 -- | Write a parser for Person.
 --
