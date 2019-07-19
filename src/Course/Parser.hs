@@ -13,6 +13,7 @@ import           Course.List
 import           Course.Monad
 import           Course.Optional
 import           Course.Person
+import           Course.Traversable (sequenceA)
 import           Data.Char
 
 -- $setup
@@ -380,8 +381,8 @@ alpha = satisfy isAlpha
 sequenceParser ::
   List (Parser a)
   -> Parser (List a)
-sequenceParser =
-  error "todo: Course.Parser#sequenceParser"
+-- sequenceParser = foldRight (lift2 (:.)) (pure Nil)
+sequenceParser = sequenceA
 
 -- | Return a parser that produces the given number of values off the given parser.
 -- This parser fails if the given parser fails in the attempt to produce the given number of values.
