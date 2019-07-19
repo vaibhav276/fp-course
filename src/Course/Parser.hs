@@ -331,8 +331,7 @@ list1 pa = (\a -> (\b -> pure (a :. b)) =<< list pa) =<< pa
 -- /Tip:/ Use the @list1@ and @space@ functions.
 spaces1 ::
   Parser Chars
-spaces1 =
-  error "todo: Course.Parser#spaces1"
+spaces1 = list1 space
 
 -- | Return a parser that produces a lower-case character but fails if
 --
