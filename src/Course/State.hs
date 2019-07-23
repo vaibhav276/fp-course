@@ -154,8 +154,13 @@ firstRepeat ::
   Ord a =>
   List a
   -> Optional a
-firstRepeat =
-  error "todo: Course.State#firstRepeat"
+firstRepeat la = eval (findM lookFor la) S.empty
+  where lookFor :: (Ord a) => a -> State (S.Set a) Bool
+        -- lookFor x = get >>= (\dataset ->
+        --                        if S.member x dataset
+        --                        then pure True
+        --                        else State $ \ds -> (False,S.insert x ds))
+        lookFor x = get >>= (\ds -> State $ const (S.member x ds,S.insert x ds))
 
 -- | Remove all duplicate elements in a `List`.
 -- /Tip:/ Use `filtering` and `State` with a @Data.Set#Set@.
