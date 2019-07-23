@@ -202,5 +202,16 @@ distinct xs = eval (filtering (\x ->
 isHappy ::
   Integer
   -> Bool
-isHappy =
-  error "todo: Course.State#isHappy"
+isHappy x = 1 `contains` firstRepeat (produce happySequenceNext (fromInteger x))
+  where happySequenceNext = sumSquare . digitsOf
+        digitsOf = map digitToInt . show'
+        sumSquare = sum . map square
+        -- square a = a * a
+        square = join (*) -- For Monad (-> t)
+{-
+7 -> 49
+16 + 81 -> 97
+81 + 49 -> 130
+1 + 9 -> 10
+1 -> 1
+-}
