@@ -150,8 +150,7 @@ eval' ::
   State' s a
   -> s
   -> a
-eval' =
-  error "todo: Course.StateT#eval'"
+eval' sa = fst . runState' sa
 
 -- | A `StateT` where the state also distributes into the produced value.
 --
