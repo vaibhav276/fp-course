@@ -129,8 +129,7 @@ exec' ::
   State' s a
   -> s
   -> s
-exec' =
-  error "todo: Course.StateT#exec'"
+exec' sa = snd . runState' sa
 
 -- | Run the `StateT` seeded with `s` and retrieve the resulting value.
 --
