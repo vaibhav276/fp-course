@@ -1,21 +1,21 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE InstanceSigs        #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE RebindableSyntax    #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE InstanceSigs #-}
-{-# LANGUAGE RebindableSyntax #-}
-{-# LANGUAGE OverloadedStrings #-}
 
 module Course.StateT where
 
-import Course.Core
-import Course.ExactlyOne
-import Course.Optional
-import Course.List
-import Course.Functor
-import Course.Applicative
-import Course.Monad
-import Course.State
-import qualified Data.Set as S
-import qualified Prelude as P
+import           Course.Applicative
+import           Course.Core
+import           Course.ExactlyOne
+import           Course.Functor
+import           Course.List
+import           Course.Monad
+import           Course.Optional
+import           Course.State
+import qualified Data.Set           as S
+import qualified Prelude            as P
 
 -- $setup
 -- >>> import Test.QuickCheck
