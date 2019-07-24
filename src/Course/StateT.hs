@@ -129,7 +129,7 @@ exec' ::
   State' s a
   -> s
   -> s
-exec' sa = snd . runState' sa
+exec' sa = runExactlyOne . execT sa
 
 -- | Run the `StateT` seeded with `s` and retrieve the resulting value.
 --
@@ -150,7 +150,7 @@ eval' ::
   State' s a
   -> s
   -> a
-eval' sa = fst . runState' sa
+eval' sa = runExactlyOne . evalT sa
 
 -- | A `StateT` where the state also distributes into the produced value.
 --
