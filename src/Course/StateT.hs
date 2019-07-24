@@ -140,8 +140,7 @@ evalT ::
   StateT s f a
   -> s
   -> f a
-evalT =
-  error "todo: Course.StateT#evalT"
+evalT sfa = (fst <$>) . runStateT sfa
 
 -- | Run the `State'` seeded with `s` and retrieve the resulting value.
 --
