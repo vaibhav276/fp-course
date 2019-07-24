@@ -119,8 +119,7 @@ execT ::
   StateT s f a
   -> s
   -> f s
-execT =
-  error "todo: Course.StateT#execT"
+execT sfa = (snd <$>) . runStateT sfa
 
 -- | Run the `State'` seeded with `s` and retrieve the resulting state.
 --
