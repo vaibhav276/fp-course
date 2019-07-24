@@ -172,8 +172,7 @@ putT ::
   Applicative f =>
   s
   -> StateT s f ()
-putT =
-  error "todo: Course.StateT#putT"
+putT s = StateT $ const ( pure ((),s) )
 
 -- | Remove all duplicate elements in a `List`.
 --
