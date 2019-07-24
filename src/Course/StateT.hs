@@ -159,8 +159,7 @@ eval' sa = runExactlyOne . evalT sa
 getT ::
   Applicative f =>
   StateT s f s
-getT =
-  error "todo: Course.StateT#getT"
+getT = StateT $ \s -> pure (s,s)
 
 -- | A `StateT` where the resulting state is seeded with the given value.
 --
