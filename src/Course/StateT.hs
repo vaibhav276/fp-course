@@ -258,15 +258,18 @@ instance Monad f => Applicative (OptionalT f) where
   pure ::
     a
     -> OptionalT f a
-  pure =
-    error "todo: Course.StateT pure#instance (OptionalT f)"
+  -- pure x = OptionalT $ pure (Full x)
+  pure = OptionalT . pure . pure
 
   (<*>) ::
     OptionalT f (a -> b)
     -> OptionalT f a
     -> OptionalT f b
-  (<*>) =
-    error "todo: Course.StateT (<*>)#instance (OptionalT f)"
+  (<*>) ofab fa = OptionalT $ runOptionalT ofab >>= (\oab ->
+                      runOptionalT fa >>= (\oa ->
+                         pure (oab <*> oa)
+                     )
+                  )
 
 -- | Implement the `Monad` instance for `OptionalT f` given a Monad f.
 --
