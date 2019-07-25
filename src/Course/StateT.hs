@@ -228,8 +228,7 @@ instance Functor f => Functor (OptionalT f) where
     (a -> b)
     -> OptionalT f a
     -> OptionalT f b
-  (<$>) =
-    error "todo: Course.StateT (<$>)#instance (OptionalT f)"
+  (<$>) fn ofa = OptionalT $ (fn <$>) <$> runOptionalT ofa
 
 -- | Implement the `Applicative` instance for `OptionalT f` given a Monad f.
 --
