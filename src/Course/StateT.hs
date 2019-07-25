@@ -280,8 +280,11 @@ instance Monad f => Monad (OptionalT f) where
     (a -> OptionalT f b)
     -> OptionalT f a
     -> OptionalT f b
-  (=<<) =
-    error "todo: Course.StateT (=<<)#instance (OptionalT f)"
+  (=<<) fn ofa = OptionalT $ runOptionalT ofa >>= (\oa ->
+                    case oa of
+                      Empty -> pure Empty
+                      Full x -> runOptionalT (fn x)
+                 )
 
 -- | A `Logger` is a pair of a list of log values (`[l]`) and an arbitrary value (`a`).
 data Logger l a =
