@@ -183,8 +183,11 @@ distinct' ::
   Ord a =>
   List a
   -> List a
-distinct' =
-  error "todo: Course.StateT#distinct'"
+distinct' xs = eval' (filtering ( \x ->
+                                    state' $ \ds ->
+                                     (S.notMember x ds, S.insert x ds)
+                                ) xs
+                     ) S.empty
 
 -- | Remove all duplicate elements in a `List`.
 -- However, if you see a value greater than `100` in the list,
