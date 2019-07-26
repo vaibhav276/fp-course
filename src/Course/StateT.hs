@@ -282,7 +282,7 @@ instance Monad f => Monad (OptionalT f) where
     -> OptionalT f b
   (=<<) fn ofa = OptionalT $ runOptionalT ofa >>= (\oa ->
                     case oa of
-                      Empty -> pure Empty
+                      Empty  -> pure Empty
                       Full x -> runOptionalT (fn x)
                  )
 
