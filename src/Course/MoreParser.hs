@@ -1,19 +1,19 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE RebindableSyntax    #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE RebindableSyntax #-}
-{-# LANGUAGE OverloadedStrings #-}
 
 module Course.MoreParser where
 
-import Course.Core
-import Course.Parser
-import Course.List
-import Course.Optional
-import Course.Applicative
-import Course.Monad
-import Course.Functor
-import Course.Traversable
-import Numeric hiding (readHex)
+import           Course.Applicative
+import           Course.Core
+import           Course.Functor
+import           Course.List
+import           Course.Monad
+import           Course.Optional
+import           Course.Parser
+import           Course.Traversable
+import           Numeric            hiding (readHex)
 
 -- $setup
 -- >>> :set -XOverloadedStrings
