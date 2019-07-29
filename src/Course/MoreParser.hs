@@ -82,8 +82,7 @@ charTok = tok . is
 -- /Tip:/ Use `charTok`.
 commaTok ::
   Parser Char
-commaTok =
-  error "todo: Course.MoreParser#commaTok"
+commaTok = charTok ','
 
 -- | Write a parser that parses either a double-quote or a single-quote.
 --
@@ -99,8 +98,7 @@ commaTok =
 -- True
 quote ::
   Parser Char
-quote =
-  error "todo: Course.MoreParser#quote"
+quote = (is '\'') ||| (is '"')
 
 -- | Write a function that parses the given string (fails otherwise).
 --
