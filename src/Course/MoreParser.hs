@@ -126,8 +126,7 @@ string = traverse is
 stringTok ::
   Chars
   -> Parser Chars
-stringTok =
-  error "todo: Course.MoreParser#stringTok"
+stringTok = tok . string
 
 -- | Write a function that tries the given parser, otherwise succeeds by producing the given value.
 --
