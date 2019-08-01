@@ -205,8 +205,8 @@ between ::
   -> Parser c
   -> Parser a
   -> Parser a
-between =
-  error "todo: Course.MoreParser#between"
+between po pc pa = po *> pa <* pc
+-- between po pc pa = lift3 (\_ a _ -> a) po pa pc
 
 -- | Write a function that applies the given parser in between the two given characters.
 --
