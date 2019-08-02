@@ -279,7 +279,7 @@ jsonObjectValue :: Parser JsonValue
 jsonObjectValue = JsonObject <$> jsonObject
 
 jsonStringValue :: Parser JsonValue
-jsonStringValue = JsonString <$> jsonNull
+jsonStringValue = JsonString <$> jsonString
 
 jsonArrayValue :: Parser JsonValue
 jsonArrayValue = JsonArray <$> jsonArray
