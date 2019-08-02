@@ -153,8 +153,11 @@ jsonStringChar = character >>= (\c1 ->
 -- True
 jsonNumber ::
   Parser Rational
-jsonNumber =
-  error "todo: Course.JsonParser#jsonNumber"
+jsonNumber = P $ \s ->
+  optional
+     (\(n,s') -> Result s' n)
+     (UnexpectedString s)
+     (readFloats s)
 
 -- | Parse a JSON true literal.
 --
