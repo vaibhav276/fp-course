@@ -256,8 +256,36 @@ jsonKVParser = lift3 (\k _ v -> (k,v)) jsonString (charTok ':') jsonValue
 -- Result >< [("key1",JsonTrue),("key2",JsonArray [JsonRational (7 % 1),JsonFalse]),("key3",JsonObject [("key4",JsonNull)])]
 jsonValue ::
   Parser JsonValue
-jsonValue =
-   error "todo: Course.JsonParser#jsonValue"
+jsonValue = spaces *> (jsonNullValue |||
+                       jsonTrueValue |||
+                       jsonFalseValue |||
+                       jsonArrayValue |||
+                       jsonStringValue |||
+                       jsonObjectValue |||
+                       jsonRationalValue
+                      )
+            <* spaces
+
+jsonNullValue :: Parser JsonValue
+jsonNullValue = JsonNull <$ jsonNull
+
+jsonTrueValue :: Parser JsonValue
+jsonTrueValue = JsonTrue <$ jsonTrue
+
+jsonFalseValue :: Parser JsonValue
+jsonFalseValue = JsonFalse <$ jsonFalse
+
+jsonObjectValue :: Parser JsonValue
+jsonObjectValue = JsonObject <$> jsonObject
+
+jsonStringValue :: Parser JsonValue
+jsonStringValue = JsonString <$> jsonNull
+
+jsonArrayValue :: Parser JsonValue
+jsonArrayValue = JsonArray <$> jsonArray
+
+jsonRationalValue :: Parser JsonValue
+jsonRationalValue = JsonRational <$> jsonNumber
 
 -- | Read a file into a JSON value.
 --
