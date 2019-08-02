@@ -1,19 +1,19 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
+{-# LANGUAGE RebindableSyntax    #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RebindableSyntax #-}
 
 module Course.JsonParser where
 
-import Course.Core
-import Course.Parser
-import Course.MoreParser
-import Course.JsonValue
-import Course.Functor
-import Course.Applicative
-import Course.Monad
-import Course.List
-import Course.Optional
+import           Course.Applicative
+import           Course.Core
+import           Course.Functor
+import           Course.JsonValue
+import           Course.List
+import           Course.Monad
+import           Course.MoreParser
+import           Course.Optional
+import           Course.Parser
 
 -- $setup
 -- >>> :set -XOverloadedStrings
