@@ -331,8 +331,7 @@ sepby pa ps = sepby1 pa ps ||| pure Nil
 -- True
 eof ::
   Parser ()
-eof =
-  error "todo: Course.MoreParser#eof"
+eof = P $ \i -> if isEmpty i then Result i () else ExpectedEof i
 
 -- | Write a parser that produces a character that satisfies all of the given predicates.
 --
