@@ -354,8 +354,7 @@ eof = P $ \i -> if isEmpty i then Result i () else ExpectedEof i
 satisfyAll ::
   List (Char -> Bool)
   -> Parser Char
-satisfyAll =
-  error "todo: Course.MoreParser#satisfyAll"
+satisfyAll lp = satisfy (and . sequence lp)
 
 -- | Write a parser that produces a character that satisfies any of the given predicates.
 --
@@ -375,8 +374,7 @@ satisfyAll =
 satisfyAny ::
   List (Char -> Bool)
   -> Parser Char
-satisfyAny =
-  error "todo: Course.MoreParser#satisfyAny"
+satisfyAny lp = satisfy (or . sequence lp)
 
 -- | Write a parser that parses between the two given characters, separated by a comma character ','.
 --
