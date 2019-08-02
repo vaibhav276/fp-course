@@ -293,5 +293,6 @@ jsonRationalValue = JsonRational <$> jsonNumber
 readJsonValue ::
   FilePath
   -> IO (ParseResult JsonValue)
-readJsonValue =
-  error "todo: Course.JsonParser#readJsonValue"
+readJsonValue path = (parse jsonValue) <$> readFile path
+
+-- todo: terrible performance in jsonValue function
