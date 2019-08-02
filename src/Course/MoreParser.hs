@@ -247,8 +247,14 @@ betweenCharTok x y = between (charTok x) (charTok y)
 -- True
 hex ::
   Parser Char
-hex =
-  error "todo: Course.MoreParser#hex"
+hex = replicateA 4 (satisfy isHexDigit) >>= (\cs ->
+         optional (pure . chr) (constantParser (UnexpectedString cs)) (readHex cs)
+                                            )
+-- hexParser :: Parser Char
+-- hexParser = satisfy isHexDigit
+--
+-- testParser :: Parser (List Char)
+-- testParser = replicateA 4 (satisfy isHexDigit) -- fixed replicateA to get this right
 
 -- | Write a function that parses the character 'u' followed by 4 hex digits and return the character value.
 --

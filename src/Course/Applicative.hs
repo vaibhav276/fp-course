@@ -340,8 +340,8 @@ replicateA ::
   Int
   -> f a
   -> f (List a)
-replicateA n = lift1 (replicate n)
--- replicateA n fa = sequence (replicate n fa)
+-- replicateA n = lift1 (replicate n) -- type checks, but doesnt really sequence the effects
+replicateA n fa = sequence (replicate n fa)
 
 -- | Filter a list with a predicate that produces an effect.
 --
