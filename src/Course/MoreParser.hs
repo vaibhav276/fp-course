@@ -298,8 +298,7 @@ sepby1 ::
   Parser a
   -> Parser s
   -> Parser (List a)
-sepby1 =
-  error "todo: Course.MoreParser#sepby1"
+sepby1 pa ps = lift2 (:.) pa (list (ps *> pa))
 
 -- | Write a function that produces a list of values coming off the given parser,
 -- separated by the second given parser.
@@ -321,8 +320,7 @@ sepby ::
   Parser a
   -> Parser s
   -> Parser (List a)
-sepby =
-  error "todo: Course.MoreParser#sepby"
+sepby pa ps = sepby1 pa ps ||| pure Nil
 
 -- | Write a parser that asserts that there is no remaining input.
 --
