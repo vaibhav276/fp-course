@@ -1,12 +1,12 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE InstanceSigs        #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE InstanceSigs #-}
 
 module Course.Comonad where
 
-import Course.Core
-import Course.ExactlyOne
-import Course.Extend
+import           Course.Core
+import           Course.ExactlyOne
+import           Course.Extend
 
 -- | All instances of the `Comonad` type-class must satisfy two laws. These
 -- laws are not checked by the compiler. These laws are given as:
