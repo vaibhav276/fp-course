@@ -33,8 +33,7 @@ instance Extend ExactlyOne where
     (ExactlyOne a -> b)
     -> ExactlyOne a
     -> ExactlyOne b
-  (<<=) =
-    error "todo: Course.Extend (<<=)#instance ExactlyOne"
+  (<<=) eoab eoa = ExactlyOne $ eoab eoa
 
 -- | Implement the @Extend@ instance for @List@.
 --
