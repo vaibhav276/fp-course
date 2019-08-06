@@ -409,8 +409,7 @@ swapRight (ListZipper l x r)   = let (r1,r2) = splitFirst r
 dropLefts ::
   ListZipper a
   -> ListZipper a
-dropLefts =
-  error "todo: Course.ListZipper#dropLefts"
+dropLefts (ListZipper _ x r) = ListZipper Nil x r
 
 -- | Drop all values to the right of the focus.
 --
