@@ -308,8 +308,22 @@ findRight p (ListZipper l x r) = let (l1,l2) = break p r
 moveLeftLoop ::
   ListZipper a
   -> ListZipper a
-moveLeftLoop =
-  error "todo: Course.ListZipper#moveLeftLoop"
+moveLeftLoop (ListZipper _ _ Nil) = error "Function not defined for Nil on right side"
+moveLeftLoop (ListZipper Nil x r) = let (r1,r2) = splitLast r
+                                    in ListZipper (reverse (x:.r1)) r2 Nil
+moveLeftLoop (ListZipper l x r)   = let (l1,l2) = splitFirst l
+                                    in ListZipper l1 l2 (x:.r)
+
+splitLast :: List a -> (List a, a)
+splitLast xs = let fs = take (length xs - 1) xs
+                   (l:.ls) = drop (length xs - 1) xs
+               in (fs, l)
+
+splitFirst :: List a -> (List a, a)
+splitFirst xs = let (f:._) = take 1 xs
+                    ls = drop 1 xs
+                in (ls, f)
+
 
 -- | Move the zipper right, or if there are no elements to the right, go to the far left.
 --
