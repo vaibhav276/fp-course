@@ -393,8 +393,9 @@ swapLeft (ListZipper l x r)   = let (l1,l2) = splitFirst l
 swapRight ::
   ListZipper a
   -> MaybeListZipper a
-swapRight =
-  error "todo: Course.ListZipper#swapRight"
+swapRight (ListZipper _ _ Nil) = IsNotZ
+swapRight (ListZipper l x r)   = let (r1,r2) = splitFirst r
+                                 in IsZ $ ListZipper l r2 (x:.r1)
 
 -- | Drop all values to the left of the focus.
 --
