@@ -335,8 +335,11 @@ splitFirst xs = let (f:._) = take 1 xs
 moveRightLoop ::
   ListZipper a
   -> ListZipper a
-moveRightLoop =
-  error "todo: Course.ListZipper#moveRightLoop"
+moveRightLoop (ListZipper Nil _ Nil) = error "Function not defined for Nil on both sides"
+moveRightLoop (ListZipper l x Nil) = let (l1,l2) = splitLast l
+                                     in ListZipper Nil l2 (reverse (x:.l1))
+moveRightLoop (ListZipper l x r)   = let (r1,r2) = splitFirst r
+                                     in ListZipper (x:.l) r2 r1
 
 -- | Move the zipper one position to the left.
 --
