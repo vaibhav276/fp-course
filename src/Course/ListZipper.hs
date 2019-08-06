@@ -365,8 +365,9 @@ moveLeft (ListZipper l x r)   = let (l1,l2) = splitFirst l
 moveRight ::
   ListZipper a
   -> MaybeListZipper a
-moveRight =
-  error "todo: Course.ListZipper#moveRight"
+moveRight (ListZipper _ _ Nil) = IsNotZ
+moveRight (ListZipper l x r)   = let (r1,r2) = splitFirst r
+                                 in IsZ $ ListZipper (x:.l) r2 r1
 
 -- | Swap the current focus with the value to the left of focus.
 --
