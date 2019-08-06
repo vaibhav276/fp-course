@@ -87,8 +87,7 @@ instance Functor MaybeListZipper where
 toList ::
   ListZipper a
   -> List a
-toList =
-  error "todo: Course.ListZipper#toList"
+toList (ListZipper l x r) = (reverse l) ++ (x :. Nil) ++ r
 
 -- | Convert the given (maybe) zipper back to a list.
 toListZ ::
