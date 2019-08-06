@@ -258,8 +258,14 @@ findLeft ::
   (a -> Bool)
   -> ListZipper a
   -> MaybeListZipper a
-findLeft =
-  error "todo: Course.ListZipper#findLeft"
+findLeft p (ListZipper l x r) = let (l1,l2) = break p l
+                                in case l2 of
+                                     Nil     -> IsNotZ
+                                     (b:.bs) -> IsZ (ListZipper
+                                                        bs
+                                                        b
+                                                        (l1 ++ (x:.Nil) ++ r)
+                                                    )
 
 -- | Seek to the right for a location matching a predicate, excluding the
 -- focus.
