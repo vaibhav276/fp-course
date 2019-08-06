@@ -351,8 +351,9 @@ moveRightLoop (ListZipper l x r)   = let (r1,r2) = splitFirst r
 moveLeft ::
   ListZipper a
   -> MaybeListZipper a
-moveLeft =
-  error "todo: Course.ListZipper#moveLeft"
+moveLeft (ListZipper Nil _ _) = IsNotZ
+moveLeft (ListZipper l x r)   = let (l1,l2) = splitFirst l
+                                in IsZ $ ListZipper l1 l2 (x:.r)
 
 -- | Move the zipper one position to the right.
 --
