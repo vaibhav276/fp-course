@@ -218,8 +218,8 @@ setFocus =
 hasLeft ::
   ListZipper a
   -> Bool
-hasLeft =
-  error "todo: Course.ListZipper#hasLeft"
+hasLeft (ListZipper Nil _ _) = False
+hasLeft _                    = True
 
 -- | Returns whether there are values to the right of focus.
 --
