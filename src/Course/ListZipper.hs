@@ -71,8 +71,8 @@ instance Functor ListZipper where
 -- >>> (+1) <$> (IsZ (zipper [3,2,1] 4 [5,6,7]))
 -- [4,3,2] >5< [6,7,8]
 instance Functor MaybeListZipper where
-  (<$>) =
-    error "todo: Course.ListZipper (<$>)#instance MaybeListZipper"
+  (<$>) f (IsZ lz) = IsZ (f <$> lz)
+  (<$>) _ _        = IsNotZ
 
 -- | Convert the given zipper back to a list.
 --
