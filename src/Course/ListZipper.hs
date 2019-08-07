@@ -577,8 +577,9 @@ end lz@(ListZipper _ _ r) = case moveRightN (length r) lz of
 start ::
   ListZipper a
   -> ListZipper a
-start =
-  error "todo: Course.ListZipper#start"
+start lz@(ListZipper l _ _) = case moveLeftN (length l) lz of
+                                IsZ x  -> x
+                                IsNotZ -> lz
 
 -- | Delete the current focus and pull the left values to take the empty position.
 --
