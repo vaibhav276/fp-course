@@ -534,8 +534,11 @@ nth ::
   Int
   -> ListZipper a
   -> MaybeListZipper a
-nth =
-  error "todo: Course.ListZipper#nth"
+nth n lz@(ListZipper l _ r) | n < 0 = IsNotZ
+                            | n < length l = moveLeftN (length l - n) lz
+                            | n == length l = IsZ lz
+                            | n < (length l + length r) = moveRightN (n - length l) lz
+                            | otherwise = IsNotZ
 
 -- | Return the absolute position of the current focus in the zipper.
 --
