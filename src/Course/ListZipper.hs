@@ -622,8 +622,7 @@ insertPushLeft ::
   a
   -> ListZipper a
   -> ListZipper a
-insertPushLeft =
-  error "todo: Course.ListZipper#insertPushLeft"
+insertPushLeft y (ListZipper l x r) = ListZipper (x:.l) y r
 
 -- | Insert at the current focus and push the right values to make way for the new position.
 --
@@ -638,8 +637,7 @@ insertPushRight ::
   a
   -> ListZipper a
   -> ListZipper a
-insertPushRight =
-  error "todo: Course.ListZipper#insertPushRight"
+insertPushRight y (ListZipper l x r) = ListZipper l y (x:.r)
 
 -- | Implement the `Applicative` instance for `ListZipper`.
 -- `pure` produces an infinite list zipper (to both left and right).
