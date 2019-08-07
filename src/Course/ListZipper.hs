@@ -684,15 +684,14 @@ instance Applicative ListZipper where
 -- ><
 instance Applicative MaybeListZipper where
   pure :: a -> MaybeListZipper a
-  pure x = IsZ $ ListZipper Nil x Nil
+  pure = IsZ . pure
 
   (<*>) ::
     MaybeListZipper (a -> b)
     -> MaybeListZipper a
     -> MaybeListZipper b
-  (<*>) (IsZ (ListZipper l1 x1 r1)) (IsZ (ListZipper l2 x2 r2)) =
-    IsZ (ListZipper (zipWith ($) l1 l2) (x1 $ x2) (zipWith ($) r1 r2))
-  (<*>) _ _ = IsNotZ
+  (<*>) (IsZ lz1) (IsZ lz2) = IsZ $ lz1 <*> lz2
+  (<*>) _ _                 = IsNotZ
 
 -- | Implement the `Extend` instance for `ListZipper`.
 -- This implementation "visits" every possible zipper value derivable from a given zipper (i.e. all zippers to the left and right).
