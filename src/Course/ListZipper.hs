@@ -549,8 +549,7 @@ nth n lz@(ListZipper l _ r) | n < 0 = IsNotZ
 index ::
   ListZipper a
   -> Int
-index =
-  error "todo: Course.ListZipper#index"
+index (ListZipper l _ _) = length l
 
 -- | Move the focus to the end of the zipper.
 --
