@@ -591,8 +591,9 @@ start lz@(ListZipper l _ _) = case moveLeftN (length l) lz of
 deletePullLeft ::
   ListZipper a
   -> MaybeListZipper a
-deletePullLeft =
-  error "todo: Course.ListZipper#deletePullLeft"
+deletePullLeft (ListZipper l _ r) | length l > 0 = let (l',x) = splitFirst l
+                                                   in IsZ $ ListZipper l' x r
+                                  | otherwise = IsNotZ
 
 -- | Delete the current focus and pull the right values to take the empty position.
 --
@@ -604,8 +605,9 @@ deletePullLeft =
 deletePullRight ::
   ListZipper a
   -> MaybeListZipper a
-deletePullRight =
-  error "todo: Course.ListZipper#deletePullRight"
+deletePullRight (ListZipper l _ r) | length r > 0 = let (r',x) = splitFirst r
+                                                    in IsZ $ ListZipper l x r'
+                                   | otherwise = IsNotZ
 
 -- | Insert at the current focus and push the left values to make way for the new position.
 --
