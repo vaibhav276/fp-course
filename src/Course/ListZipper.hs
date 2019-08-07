@@ -562,8 +562,9 @@ index (ListZipper l _ _) = length l
 end ::
   ListZipper a
   -> ListZipper a
-end =
-  error "todo: Course.ListZipper#end"
+end lz@(ListZipper _ _ r) = case moveRightN (length r) lz of
+                              IsZ x  -> x
+                              IsNotZ -> lz
 
 -- | Move the focus to the start of the zipper.
 --
