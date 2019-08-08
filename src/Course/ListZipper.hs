@@ -759,8 +759,12 @@ instance Comonad ListZipper where
 -- >>> traverse id (zipper [Full 1, Full 2, Full 3] (Full 4) [Empty, Full 6, Full 7])
 -- Empty
 instance Traversable ListZipper where
-  traverse =
-    error "todo: Course.ListZipper traverse#instance ListZipper"
+  traverse :: Applicative f =>
+    (a -> f b)
+    -> ListZipper a
+    -> f (ListZipper b)
+  traverse fn (ListZipper l x r) =
+    lift3 ListZipper (traverse fn l) (fn x) (traverse fn r)
 
 -- | Implement the `Traversable` instance for `MaybeListZipper`.
 --
