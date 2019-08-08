@@ -734,8 +734,11 @@ moveRightO lz = case moveRight lz of
 -- >>> id <<= (IsZ (zipper [2,1] 3 [4,5]))
 -- [[1] >2< [3,4,5],[] >1< [2,3,4,5]] >[2,1] >3< [4,5]< [[3,2,1] >4< [5],[4,3,2,1] >5< []]
 instance Extend MaybeListZipper where
-  (<<=) =
-    error "todo: Course.ListZipper (<<=)#instance MaybeListZipper"
+  (<<=) :: (MaybeListZipper a -> b)
+    -> MaybeListZipper a
+    -> MaybeListZipper b
+  (<<=) _ IsNotZ = IsNotZ
+  (<<=) f (IsZ lz) = IsZ $ (f . IsZ) <<= lz
 
 -- | Implement the `Comonad` instance for `ListZipper`.
 -- This implementation returns the current focus of the zipper.
