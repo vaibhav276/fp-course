@@ -141,8 +141,14 @@ reverseInteractive = putStrLn "Enter source filename: " >-
 -- /Tip:/ @putStrLn :: String -> IO ()@ -- Prints a string and then a new line to standard output.
 encodeInteractive ::
   IO ()
-encodeInteractive =
-  error "todo: Course.Interactive#encodeInteractive"
+encodeInteractive = putStrLn "Enter string to encode: " >-
+                    getLine >>= \s ->
+                    putStrLn (flatMap encode s)
+                    where
+                      encode ' ' = "\"%20\""
+                      encode '\t' = "\"%09\""
+                      encode '\"' = "\"%22\""
+                      encode c = (c:.Nil)
 
 interactive ::
   IO ()
