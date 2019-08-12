@@ -1,16 +1,16 @@
-{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE NoImplicitPrelude   #-}
+{-# LANGUAGE OverloadedStrings   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# LANGUAGE OverloadedStrings #-}
 
 module Course.Interactive where
 
-import Course.Core
-import Course.Functor
-import Course.Applicative
-import Course.Monad
-import Course.Traversable
-import Course.List
-import Course.Optional
+import           Course.Applicative
+import           Course.Core
+import           Course.Functor
+import           Course.List
+import           Course.Monad
+import           Course.Optional
+import           Course.Traversable
 
 -- | Eliminates any value over which a functor is defined.
 vooid ::
