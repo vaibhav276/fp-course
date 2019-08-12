@@ -111,8 +111,12 @@ convertInteractive = putStrLn "Enter a string: " >-
 -- /Tip:/ @putStrLn :: String -> IO ()@ -- Prints a string and then a new line to standard output.
 reverseInteractive ::
   IO ()
-reverseInteractive =
-  error "todo: Course.Interactive#reverseInteractive"
+reverseInteractive = putStrLn "Enter source filename: " >-
+                     getLine >>= \source ->
+                     putStrLn "Enter target filename" >-
+                     getLine >>= \target ->
+                     readFile source >>= \contents ->
+                     writeFile target (reverse contents)
 
 -- |
 --
